@@ -28,34 +28,47 @@ export function HeroLoop({ className }: { className?: string }) {
   }, []);
 
   return (
-    <figure className={cn("mx-auto w-full max-w-[560px] lg:max-w-none", className)}>
-      {reduceMotion ? (
-        <Image
-          src={hero.poster}
-          alt="Flux on iPhone: Welcome to Flux."
-          width={1080}
-          height={1080}
-          className="h-auto w-full"
-          priority
-        />
-      ) : (
-        <video
-          ref={videoRef}
-          className="aspect-square h-auto w-full bg-transparent"
-          width={1080}
-          height={1080}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster={hero.poster}
-          aria-label="Flux app on iPhone"
-        >
-          <source src={hero.webm} type="video/webm" />
-          <source src={hero.mov} type='video/mp4; codecs="hvc1"' />
-        </video>
+    <figure
+      className={cn(
+        "mx-auto w-full max-w-[40rem] translate-x-[150px] lg:mx-0 lg:max-w-none lg:w-[min(100%,42rem)]",
+        className,
       )}
+    >
+      <div className="relative aspect-square origin-center scale-[1.12] lg:origin-right lg:scale-[1.22]">
+        {reduceMotion ? (
+          <Image
+            src={hero.poster}
+            alt="Flux on iPhone: Welcome to Flux."
+            width={1080}
+            height={1080}
+            className="absolute inset-x-0 -top-[1px] h-[calc(100%+10px)] w-full object-fill"
+            priority
+          />
+        ) : (
+          <video
+            ref={videoRef}
+            className="absolute inset-x-0 -top-[1px] h-[calc(100%+10px)] w-full bg-transparent object-fill"
+            width={1080}
+            height={1080}
+            autoPlay
+            muted
+            playsInline
+            preload="auto"
+            poster={hero.poster}
+            aria-label="Flux app on iPhone"
+            onEnded={(event) => {
+              const video = event.currentTarget;
+              video.pause();
+              if (Number.isFinite(video.duration) && video.duration > 0) {
+                video.currentTime = video.duration;
+              }
+            }}
+          >
+            <source src={hero.webm} type="video/webm" />
+            <source src={hero.mov} type='video/mp4; codecs="hvc1"' />
+          </video>
+        )}
+      </div>
     </figure>
   );
 }

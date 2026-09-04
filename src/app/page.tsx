@@ -44,7 +44,7 @@ export default function HomePage() {
   return (
     <>
       <section>
-        <Container className="grid items-center gap-16 py-16 sm:py-24 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-12 lg:py-28">
+        <Container className="grid items-center gap-16 overflow-x-visible py-16 sm:py-24 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.25fr)] lg:gap-6 lg:py-20">
           <div className="reveal">
             <Overline>Personal payday planner</Overline>
             <h1 className="mt-4 max-w-[16ch] font-display text-[40px] font-normal leading-[1.08] tracking-[-0.045em] text-ink sm:text-[56px] lg:text-[64px] lg:leading-[1.05]">
@@ -68,7 +68,7 @@ export default function HomePage() {
             </div>
             <DisclaimerChip className="mt-5" />
           </div>
-          <div className="reveal flex justify-center lg:justify-end">
+          <div className="reveal flex justify-center overflow-visible lg:justify-end">
             <HeroLoop />
           </div>
         </Container>
