@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { cn } from "@/lib/cn";
-import { SCREEN, screens } from "@/lib/screens";
+import { DEVICE, screens } from "@/lib/screens";
 
 export function AppScreen({
   src,
@@ -17,18 +17,16 @@ export function AppScreen({
   priority?: boolean;
 }) {
   return (
-    <figure className={cn("mx-auto w-[260px] sm:w-[280px]", className)}>
-      <div className="overflow-hidden rounded-2xl border-[10px] border-[#1a1612] bg-[#1a1612] shadow-card">
-        <Image
-          src={src}
-          alt={alt}
-          width={SCREEN.width}
-          height={SCREEN.height}
-          priority={priority}
-          sizes="(max-width: 640px) 260px, 280px"
-          className="h-auto w-full"
-        />
-      </div>
+    <figure className={cn("mx-auto w-[260px] sm:w-[300px]", className)}>
+      <Image
+        src={src}
+        alt={alt}
+        width={DEVICE.width}
+        height={DEVICE.height}
+        priority={priority}
+        sizes="(max-width: 640px) 260px, 300px"
+        className="h-auto w-full bg-transparent"
+      />
       {label ? (
         <figcaption className="mt-3 text-center text-[13px] text-ink-muted">
           {label}
@@ -133,18 +131,12 @@ export function SettingsPhone({ className }: { className?: string }) {
   );
 }
 
-export function FaceIdPhone({
-  className,
-  dark = false,
-}: {
-  className?: string;
-  dark?: boolean;
-}) {
+export function FaceIdPhone({ className }: { className?: string }) {
   return (
     <AppScreen
-      src={dark ? screens.faceIdEspresso : screens.faceId}
+      src={screens.faceId}
       alt="Flux Face ID lock: authenticate to continue."
-      label={dark ? "Face ID — espresso" : "Face ID lock"}
+      label="Face ID lock"
       className={className}
     />
   );

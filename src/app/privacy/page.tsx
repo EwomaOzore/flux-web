@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { Container } from "@/components/Chrome";
 import { PageHero } from "@/components/PageHero";
+import { cn } from "@/lib/cn";
 import { LEGAL_LAST_UPDATED, PRIVACY_SECTIONS } from "@/lib/legal";
 
 export const metadata: Metadata = {
@@ -41,13 +42,29 @@ export default function PrivacyPage() {
         </p>
       </PageHero>
 
-      <div className="reveal mt-12 grid gap-3 sm:grid-cols-2">
-        {SUMMARY.map((card) => (
-          <article key={card.title} className="flux-card p-6">
-            <h2 className="text-[18px] font-semibold tracking-[-0.02em] text-ink">
+      <div className="reveal mt-12 grid gap-3 sm:grid-cols-3">
+        {SUMMARY.map((card, index) => (
+          <article
+            key={card.title}
+            className={cn(
+              "flux-card flex h-full flex-col p-6",
+              index === 0 && "!bg-forest-muted",
+              index === 1 && "sm:col-span-2",
+              index === 2 && "sm:col-span-2",
+              index === 3 && "!bg-amber-muted",
+            )}
+          >
+            <h2
+              className={cn(
+                "tracking-[-0.02em] text-ink",
+                index === 1
+                  ? "font-display text-[22px] font-medium sm:text-[24px]"
+                  : "text-[18px] font-semibold",
+              )}
+            >
               {card.title}
             </h2>
-            <p className="mt-2 text-[15px] leading-relaxed text-ink-secondary">
+            <p className="mt-auto pt-3 text-[15px] leading-relaxed text-ink-secondary">
               {card.body}
             </p>
           </article>

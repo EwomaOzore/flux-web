@@ -44,32 +44,34 @@ export default function DownloadPage() {
         <HomePhone className="lg:mr-4" />
       </div>
 
-      <div className="mt-20 grid gap-4 md:grid-cols-3">
-        <article className="flux-card p-6">
-          <Overline>Recap</Overline>
-          <h2 className="mt-3 text-[18px] font-semibold tracking-[-0.02em] text-ink">
-            Income in. Bills out. Cushion left.
-          </h2>
-          <p className="mt-2 text-[15px] leading-relaxed text-ink-secondary">
+      <div className="mt-20 grid gap-4 md:grid-cols-2">
+        <article className="flux-card flex flex-col !bg-forest-muted p-6 md:col-span-2 md:flex-row md:items-end md:justify-between md:gap-10 md:p-8">
+          <div>
+            <Overline>Recap</Overline>
+            <h2 className="mt-3 font-display text-[24px] font-medium tracking-[-0.03em] text-ink sm:text-[28px]">
+              Income in. Bills out. Cushion left.
+            </h2>
+          </div>
+          <p className="mt-4 max-w-[36ch] text-[15px] leading-relaxed text-ink-secondary md:mt-0">
             A calculator. Not a bank. Not financial advice.
           </p>
         </article>
-        <article className="flux-card p-6">
+        <article className="flux-card flex h-full flex-col p-6">
           <Overline>iOS</Overline>
           <h2 className="mt-3 text-[18px] font-semibold tracking-[-0.02em] text-ink">
             iPhone and iPad
           </h2>
-          <p className="mt-2 text-[15px] leading-relaxed text-ink-secondary">
+          <p className="mt-auto pt-3 text-[15px] leading-relaxed text-ink-secondary">
             Requires a recent iOS version as listed on the App Store. Tablet
             layouts are supported.
           </p>
         </article>
-        <article className="flux-card p-6">
+        <article className="flux-card flex h-full flex-col p-6">
           <Overline>Android</Overline>
           <h2 className="mt-3 text-[18px] font-semibold tracking-[-0.02em] text-ink">
             Phones and tablets
           </h2>
-          <p className="mt-2 text-[15px] leading-relaxed text-ink-secondary">
+          <p className="mt-auto pt-3 text-[15px] leading-relaxed text-ink-secondary">
             Requires a recent Android version as listed on Google Play. Bundle
             ID: com.fluxbudget.app.
           </p>

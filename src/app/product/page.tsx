@@ -126,13 +126,13 @@ export default function ProductPage() {
 
 function FeatureVisual({ id }: { id: string }) {
   if (id === "income") {
-    return <HomePhone className="sm:w-[280px]" />;
+    return <HomePhone />;
   }
   if (id === "bills") {
-    return <PlanPhone className="sm:w-[280px]" />;
+    return <PlanPhone />;
   }
   if (id === "timeline") {
-    return <TimelinePhone className="sm:w-[280px]" />;
+    return <TimelinePhone />;
   }
   if (id === "receipts") {
     return (
@@ -160,26 +160,21 @@ function FeatureVisual({ id }: { id: string }) {
     );
   }
   if (id === "reminders") {
-    return <SettingsPhone className="sm:w-[280px]" />;
+    return <SettingsPhone />;
   }
   if (id === "lock") {
-    return (
-      <div className="flex justify-start gap-4 overflow-x-auto pb-2">
-        <FaceIdPhone className="w-[240px] shrink-0 sm:w-[260px]" />
-        <FaceIdPhone dark className="w-[240px] shrink-0 sm:w-[260px]" />
-      </div>
-    );
+    return <FaceIdPhone />;
   }
   if (id === "currency") {
-    return <CurrencyPhone className="sm:w-[280px]" />;
+    return <CurrencyPhone />;
   }
   if (id === "appearance") {
     return (
-      <div className="flex justify-start gap-4 overflow-x-auto pb-2">
-        <HomePhone className="w-[240px] shrink-0 sm:w-[260px]" />
-        <HomeEspressoPhone className="w-[240px] shrink-0 sm:w-[260px]" />
+      <div className="flex justify-center gap-3 overflow-x-auto pb-2">
+        <HomePhone className="mx-0 w-[220px] shrink-0 sm:w-[260px]" />
+        <HomeEspressoPhone className="mx-0 w-[220px] shrink-0 sm:w-[260px]" />
       </div>
     );
   }
-  return <SettingsPhone className="sm:w-[280px]" />;
+  return <SettingsPhone />;
 }

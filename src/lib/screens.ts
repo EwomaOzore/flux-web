@@ -1,4 +1,4 @@
-export const SCREEN = { width: 1177, height: 2560 } as const;
+export const DEVICE = { width: 1290, height: 2796 } as const;
 
 export const hero = {
   mov: "/videos/hero.mov",
@@ -7,14 +7,13 @@ export const hero = {
 } as const;
 
 export const screens = {
-  home: "/screens/home.jpeg",
-  homeEspresso: "/screens/home-espresso.jpeg",
-  timeline: "/screens/timeline.jpeg",
-  plan: "/screens/plan.jpeg",
-  next: "/screens/next.jpeg",
-  welcome: "/screens/welcome.jpeg",
-  settings: "/screens/settings.jpeg",
-  currency: "/screens/currency.jpeg",
-  faceId: "/screens/face-id.jpeg",
-  faceIdEspresso: "/screens/face-id-espresso.jpeg",
+  home: "/screens/home.png",
+  homeEspresso: "/screens/home-espresso.png",
+  timeline: "/screens/timeline.png",
+  plan: "/screens/plan.png",
+  next: "/screens/next.png",
+  welcome: "/screens/welcome.png",
+  settings: "/screens/settings.png",
+  currency: "/screens/currency.png",
+  faceId: "/screens/face-id.png",
 } as const;

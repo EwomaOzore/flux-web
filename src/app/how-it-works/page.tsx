@@ -5,6 +5,7 @@ import { Button } from "@/components/Button";
 import { Container, Overline } from "@/components/Chrome";
 import { PageHero } from "@/components/PageHero";
 import { CurrencyPhone, WelcomePhone } from "@/components/PhoneMocks";
+import { cn } from "@/lib/cn";
 
 export const metadata: Metadata = {
   title: "How it works",
@@ -45,34 +46,43 @@ export default function HowItWorksPage() {
           </p>
         </PageHero>
 
-        <div className="mt-14 flex justify-start gap-6 overflow-x-auto pb-4 sm:justify-center">
-          <WelcomePhone className="w-[250px] shrink-0 sm:w-[260px]" />
-          <CurrencyPhone className="w-[250px] shrink-0 sm:w-[260px]" />
+        <div className="mt-14 flex justify-center gap-3 overflow-x-auto pb-2">
+          <WelcomePhone className="mx-0 w-[260px] shrink-0 sm:w-[300px]" />
+          <CurrencyPhone className="mx-0 w-[260px] shrink-0 sm:w-[300px]" />
         </div>
 
-        <ol className="mt-16 grid gap-4 sm:mt-20">
-          {STEPS.map((step) => (
+        <ol className="mt-16 grid gap-4 sm:mt-20 lg:grid-cols-3">
+          {STEPS.map((step, index) => (
             <li
               key={step.n}
-              className="reveal flux-card grid gap-4 p-6 sm:grid-cols-[auto_1fr] sm:gap-8 sm:p-8"
+              className={cn(
+                "reveal flux-card flex h-full flex-col p-6 sm:p-8",
+                index === 1 && "lg:col-span-2",
+                index === 2 && "!bg-forest-muted lg:col-span-2",
+              )}
             >
               <span className="font-display text-[28px] font-normal tracking-[-0.04em] text-forest">
                 {step.n}
               </span>
-              <div>
-                <h2 className="text-[22px] font-semibold tracking-[-0.02em] text-ink">
-                  {step.title}
-                </h2>
-                <p className="mt-2 max-w-[52ch] text-[16px] leading-relaxed text-ink-secondary">
-                  {step.body}
-                </p>
-              </div>
+              <h2
+                className={cn(
+                  "mt-4 tracking-[-0.02em] text-ink",
+                  index === 2
+                    ? "font-display text-[24px] font-medium sm:text-[28px]"
+                    : "text-[20px] font-semibold",
+                )}
+              >
+                {step.title}
+              </h2>
+              <p className="mt-auto pt-3 text-[16px] leading-relaxed text-ink-secondary">
+                {step.body}
+              </p>
             </li>
           ))}
         </ol>
 
-        <div className="reveal mt-20 grid gap-4 md:grid-cols-2">
-          <article className="rounded-xl border border-border-soft bg-forest-muted p-7 sm:p-8">
+        <div className="reveal mt-20 grid gap-4 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+          <article className="rounded-xl border border-border-soft bg-paper p-7 sm:p-8">
             <Overline>Who it’s for</Overline>
             <h2 className="mt-3 font-display text-[28px] font-medium tracking-[-0.03em] text-ink">
               People with a payday.
@@ -82,7 +92,7 @@ export default function HowItWorksPage() {
               clarity after bills — without handing a bank the keys.
             </p>
           </article>
-          <article className="rounded-xl border border-border-soft bg-paper p-7 sm:p-8">
+          <article className="rounded-xl border border-border-soft bg-amber-muted p-7 sm:p-8">
             <Overline>Who it’s not for</Overline>
             <h2 className="mt-3 font-display text-[28px] font-medium tracking-[-0.03em] text-ink">
               If you need a bank.

@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 import { hero } from "@/lib/screens";
 
-export function HeroLoop({ className }: { className?: string }) {
+export function HeroLoop({ className }: Readonly<{ className?: string }>) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [reduceMotion, setReduceMotion] = useState(false);
 
@@ -30,7 +30,7 @@ export function HeroLoop({ className }: { className?: string }) {
   return (
     <figure
       className={cn(
-        "mx-auto w-full max-w-[40rem] translate-x-[150px] lg:mx-0 lg:max-w-none lg:w-[min(100%,42rem)]",
+        "mx-auto w-full max-w-[28rem] sm:max-w-[32rem] lg:mx-0 lg:max-w-none lg:w-[min(100%,42rem)] lg:translate-x-[150px]",
         className,
       )}
     >
