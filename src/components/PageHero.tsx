@@ -13,7 +13,7 @@ export function PageHero({
   className?: string;
 }) {
   return (
-    <header className={cn("max-w-[40rem]", className)}>
+    <header className={cn("reveal max-w-[40rem]", className)}>
       <Overline>{overline}</Overline>
       <h1 className="mt-3 font-display text-[36px] font-medium leading-[1.15] tracking-[-0.04em] text-ink sm:text-[48px] sm:leading-[1.12]">
         {title}

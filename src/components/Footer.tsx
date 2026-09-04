@@ -16,12 +16,12 @@ const FOOTER_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="bg-espresso text-parchment">
-      <div className="mx-auto max-w-[1120px] px-6 py-16 sm:px-8 sm:py-20">
-        <div className="grid gap-12 md:grid-cols-[1.2fr_1fr]">
+    <footer className="border-t border-border-dark bg-espresso text-parchment">
+      <div className="mx-auto max-w-[1120px] px-6 py-12 sm:px-8 sm:py-14">
+        <div className="grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-start">
           <div>
             <Wordmark href="/" tone="paper" size="md" />
-            <p className="mt-5 max-w-sm text-[16px] leading-relaxed text-[#D0CAC2]">
+            <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-[#D0CAC2]">
               A private payday planner. Your numbers never leave your phone.
             </p>
             <StoreBadges tone="dark" className="mt-8" />
@@ -46,7 +46,7 @@ export function Footer() {
             </p>
           </div>
         </div>
-        <div className="mt-16 border-t border-border-dark pt-6">
+        <div className="mt-10 border-t border-border-dark pt-5">
           <p className="text-[12px] leading-relaxed text-[#9A9188]">
             Flux is a calculator. Not a bank. Not financial advice.
           </p>

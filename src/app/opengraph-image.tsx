@@ -99,7 +99,7 @@ export default function OpenGraphImage() {
                 letterSpacing: "-0.04em",
               }}
             >
-              NGN 240,000
+              NGN 972,500
             </div>
           </div>
         </div>

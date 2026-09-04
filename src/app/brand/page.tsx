@@ -97,7 +97,7 @@ export default function BrandPage() {
           <div>
             <p className="overline">JetBrains Mono — amounts only</p>
             <p className="mt-2 text-forest">
-              <Money amount={240000} size="hero" />
+              <Money amount={972500} size="hero" />
             </p>
           </div>
         </div>

@@ -3,8 +3,8 @@ import Link from "next/link";
 
 import { Button } from "@/components/Button";
 import { Container, Overline } from "@/components/Chrome";
-import { DownloadBand } from "@/components/DownloadBand";
 import { PageHero } from "@/components/PageHero";
+import { CurrencyPhone, WelcomePhone } from "@/components/PhoneMocks";
 
 export const metadata: Metadata = {
   title: "How it works",
@@ -37,8 +37,7 @@ const STEPS = [
 
 export default function HowItWorksPage() {
   return (
-    <>
-      <Container className="py-16 sm:py-24">
+    <Container className="py-16 sm:py-24">
         <PageHero overline="How it works" title="Four steps. Then you stop.">
           <p>
             Flux is a payday planner you fill in. Income in. Bills out. Cushion
@@ -46,11 +45,16 @@ export default function HowItWorksPage() {
           </p>
         </PageHero>
 
+        <div className="mt-14 flex justify-start gap-6 overflow-x-auto pb-4 sm:justify-center">
+          <WelcomePhone className="w-[250px] shrink-0 sm:w-[260px]" />
+          <CurrencyPhone className="w-[250px] shrink-0 sm:w-[260px]" />
+        </div>
+
         <ol className="mt-16 grid gap-4 sm:mt-20">
           {STEPS.map((step) => (
             <li
               key={step.n}
-              className="flux-card grid gap-4 p-6 sm:grid-cols-[auto_1fr] sm:gap-8 sm:p-8"
+              className="reveal flux-card grid gap-4 p-6 sm:grid-cols-[auto_1fr] sm:gap-8 sm:p-8"
             >
               <span className="font-display text-[28px] font-normal tracking-[-0.04em] text-forest">
                 {step.n}
@@ -67,7 +71,7 @@ export default function HowItWorksPage() {
           ))}
         </ol>
 
-        <div className="mt-20 grid gap-4 md:grid-cols-2">
+        <div className="reveal mt-20 grid gap-4 md:grid-cols-2">
           <article className="rounded-xl border border-border-soft bg-forest-muted p-7 sm:p-8">
             <Overline>Who it’s for</Overline>
             <h2 className="mt-3 font-display text-[28px] font-medium tracking-[-0.03em] text-ink">
@@ -105,7 +109,5 @@ export default function HowItWorksPage() {
           .
         </p>
       </Container>
-      <DownloadBand />
-    </>
   );
 }

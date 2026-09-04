@@ -18,7 +18,7 @@ export function FaqAccordion({
               +
             </span>
           </summary>
-          <p className="mt-3 max-w-[58ch] text-[16px] leading-relaxed text-ink-secondary">
+          <p className="faq-body mt-3 max-w-[58ch] text-[16px] leading-relaxed text-ink-secondary">
             {item.a}
           </p>
         </details>

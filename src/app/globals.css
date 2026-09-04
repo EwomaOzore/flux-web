@@ -42,6 +42,7 @@
 html {
   background: #ede9e3;
   color-scheme: light;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -107,7 +108,7 @@ summary::-webkit-details-marker {
 @keyframes flux-fade-up {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -116,7 +117,18 @@ summary::-webkit-details-marker {
 }
 
 .reveal {
-  animation: flux-fade-up 400ms ease both;
+  animation: flux-fade-up 400ms ease-out both;
+}
+
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation-timeline: view();
+    animation-range: entry 0% entry 140px;
+  }
+}
+
+details[open] .faq-body {
+  animation: flux-fade-up 320ms ease-out both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -125,6 +137,7 @@ summary::-webkit-details-marker {
   }
 
   .reveal,
+  details[open] .faq-body,
   .flux-card,
   .flux-card-hover:hover {
     animation: none;

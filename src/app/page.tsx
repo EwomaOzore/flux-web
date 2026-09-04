@@ -1,8 +1,8 @@
 import { Container, DisclaimerChip, Overline } from "@/components/Chrome";
-import { DownloadBand } from "@/components/DownloadBand";
 import { IconExport, IconLock } from "@/components/Icons";
 import { Money } from "@/components/Money";
-import { HomePhone, NextPhone, PlanPhone, TimelinePhone } from "@/components/PhoneMocks";
+import { HeroLoop } from "@/components/HeroLoop";
+import { NextPhone, PlanPhone, TimelinePhone } from "@/components/PhoneMocks";
 import { StoreBadges } from "@/components/StoreBadges";
 import Link from "next/link";
 
@@ -43,7 +43,7 @@ const LIMITS = [
 export default function HomePage() {
   return (
     <>
-      <section className="overflow-hidden">
+      <section>
         <Container className="grid items-center gap-16 py-16 sm:py-24 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-12 lg:py-28">
           <div className="reveal">
             <Overline>Personal payday planner</Overline>
@@ -69,12 +69,12 @@ export default function HomePage() {
             <DisclaimerChip className="mt-5" />
           </div>
           <div className="reveal flex justify-center lg:justify-end">
-            <HomePhone />
+            <HeroLoop />
           </div>
         </Container>
       </section>
 
-      <section className="border-t border-border-soft bg-parchment-deep/50">
+      <section className="reveal border-t border-border-soft bg-parchment-deep/50">
         <Container className="py-20 sm:py-24">
           <Overline>The number</Overline>
           <h2 className="mt-3 max-w-[18ch] font-display text-[32px] font-medium leading-tight tracking-[-0.03em] text-ink sm:text-[40px]">
@@ -85,22 +85,22 @@ export default function HomePage() {
             Not a score. Not advice. Calm arithmetic — nothing more.
           </p>
           <div className="mt-10 max-w-[34rem] overflow-hidden rounded-xl border border-border-soft bg-paper shadow-card">
-            <MathRow label="Take-home (all income streams)" amount={505000} />
-            <MathRow label="Monthly bills" amount={-223000} />
-            <MathRow label="This month’s payday line items" amount={-42000} />
+            <MathRow label="Take-home (all income streams)" amount={1250000} />
+            <MathRow label="Monthly bills" amount={-214500} />
+            <MathRow label="This month’s payday line items" amount={-63000} />
             <div className="flex items-center justify-between gap-4 border-t border-ink/10 bg-forest-muted px-5 py-5 sm:px-6">
               <span className="text-[16px] font-semibold tracking-[-0.02em] text-ink">
                 Cushion after bills
               </span>
               <span className="text-forest">
-                <Money amount={240000} size="lg" />
+                <Money amount={972500} size="lg" />
               </span>
             </div>
           </div>
         </Container>
       </section>
 
-      <section>
+      <section className="reveal">
         <Container className="py-20 sm:py-24">
           <Overline>The layout</Overline>
           <h2 className="mt-3 font-display text-[32px] font-medium tracking-[-0.03em] text-ink sm:text-[40px]">
@@ -140,7 +140,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section className="border-y border-border-soft">
+      <section className="reveal border-y border-border-soft">
         <Container className="grid items-start gap-12 py-20 sm:py-24 lg:grid-cols-[1fr_1fr]">
           <div>
             <Overline>On the device</Overline>
@@ -181,7 +181,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section>
+      <section className="reveal">
         <Container className="py-20 sm:py-24">
           <Overline>Honest limits</Overline>
           <h2 className="mt-3 font-display text-[32px] font-medium tracking-[-0.03em] text-ink sm:text-[40px]">
@@ -204,8 +204,6 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
-
-      <DownloadBand />
     </>
   );
 }

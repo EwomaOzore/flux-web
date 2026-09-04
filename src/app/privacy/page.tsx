@@ -41,7 +41,7 @@ export default function PrivacyPage() {
         </p>
       </PageHero>
 
-      <div className="mt-12 grid gap-3 sm:grid-cols-2">
+      <div className="reveal mt-12 grid gap-3 sm:grid-cols-2">
         {SUMMARY.map((card) => (
           <article key={card.title} className="flux-card p-6">
             <h2 className="text-[18px] font-semibold tracking-[-0.02em] text-ink">

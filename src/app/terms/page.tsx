@@ -28,7 +28,7 @@ export default function TermsPage() {
         </p>
       </PageHero>
 
-      <ol className="mt-12 grid gap-3">
+      <ol className="reveal mt-12 grid gap-3">
         {SUMMARY.map((line, i) => (
           <li key={line} className="flux-card flex gap-4 p-5 sm:p-6">
             <span className="font-display text-[22px] text-forest">

@@ -52,6 +52,17 @@ export function StoreBadges({
   );
 }
 
+const badgeClass: Record<Tone, { fill: string; outline: string }> = {
+  light: {
+    fill: "bg-forest text-white hover:bg-[#246844]",
+    outline: "border border-forest bg-paper text-forest hover:bg-forest-muted",
+  },
+  dark: {
+    fill: "bg-mint text-espresso hover:bg-mint-strong",
+    outline: "border border-mint text-parchment hover:bg-mint-muted",
+  },
+};
+
 function StoreBadge({
   href,
   external,
@@ -71,16 +82,9 @@ function StoreBadge({
   outline?: boolean;
   title: string;
 }) {
-  const dark = tone === "dark";
   const cls = cn(
     "inline-flex items-center gap-3 h-12 px-4 rounded-md text-left transition-colors duration-300",
-    outline
-      ? dark
-        ? "border border-mint text-parchment hover:bg-mint-muted"
-        : "border border-forest bg-paper text-forest hover:bg-forest-muted"
-      : dark
-        ? "bg-mint text-espresso hover:bg-mint-strong"
-        : "bg-forest text-white hover:bg-[#246844]",
+    outline ? badgeClass[tone].outline : badgeClass[tone].fill,
   );
 
   const inner = (
