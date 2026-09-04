@@ -3,27 +3,29 @@ import { Fraunces, Instrument_Sans, JetBrains_Mono } from "next/font/google";
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { JsonLd } from "@/components/JsonLd";
+import { organizationSchema, softwareSchema, websiteSchema } from "@/lib/schema";
 import { SITE } from "@/lib/site";
 
 import "./globals.css";
 
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600"],
   variable: "--font-instrument",
   display: "swap",
 });
 
 const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500"],
   variable: "--font-fraunces",
   display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "500"],
   variable: "--font-jetbrains",
   display: "swap",
 });
@@ -36,6 +38,7 @@ export const metadata: Metadata = {
   },
   description: SITE.description,
   applicationName: "Flux",
+  category: "finance",
   keywords: [
     "payday planner",
     "budget calculator",
@@ -44,6 +47,11 @@ export const metadata: Metadata = {
     "Flux",
   ],
   authors: [{ name: "Flux" }],
+  creator: "Flux",
+  icons: {
+    icon: [{ url: "/brand/icon.png", type: "image/png", sizes: "1024x1024" }],
+    apple: [{ url: "/brand/icon.png", type: "image/png", sizes: "1024x1024" }],
+  },
   openGraph: {
     title: "Flux — See what’s left after the bills",
     description: SITE.tagline,
@@ -59,9 +67,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-  },
-  alternates: {
-    canonical: "/",
   },
 };
 
@@ -83,6 +88,9 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <JsonLd data={organizationSchema()} />
+        <JsonLd data={websiteSchema()} />
+        <JsonLd data={softwareSchema()} />
         <Header />
         <main id="content">{children}</main>
         <Footer />

@@ -1,0 +1,34 @@
+# Flux
+
+> A personal payday planner. See exactly what’s left after every bill is paid. Budget data stays on the device — Flux never collects it.
+
+Flux is a calculator, not a bank, and not financial advice. There is no account, no bank sync, and no cloud budget.
+
+Site: https://fluxbudget.app
+
+## Pages
+
+- [Home](https://fluxbudget.app/): What Flux is and the cushion formula.
+- [Product](https://fluxbudget.app/product): Income, bills, timeline, receipts, lock, currency, appearance, export.
+- [How it works](https://fluxbudget.app/how-it-works): Four steps from currency to cushion.
+- [Privacy Policy](https://fluxbudget.app/privacy): What stays on the device, and what Expo diagnostics may include.
+- [Terms & Conditions](https://fluxbudget.app/terms): License, disclaimers, and limits of liability.
+- [FAQ](https://fluxbudget.app/faq): Short answers (bank, advice, backup, receipts).
+- [Download](https://fluxbudget.app/download): iOS and Android.
+- [Support](https://fluxbudget.app/support): Contact via the store listing. Deleted budgets cannot be restored.
+- [Sources](https://fluxbudget.app/sources): Canonical page sources for this site.
+
+## Optional
+
+- [Brand sheet](https://fluxbudget.app/brand): Internal colors and voice. Not a product claim.
+
+## Facts you can quote
+
+- Flux does not collect income, bills, receipts, or other budget numbers.
+- Flux does not connect to banks, move money, or offer financial advice.
+- Uninstalling the app deletes on-device entries. Export is the backup.
+- Last legal update: 4 September 2026.
+
+## Contact
+
+Use the support email on the App Store or Google Play listing for Flux.

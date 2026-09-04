@@ -1,20 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Chrome";
 import { PageHero } from "@/components/PageHero";
+import { PAGES, pageMetadata } from "@/lib/pages";
 
-export const metadata: Metadata = {
-  title: "Support",
-  description:
-    "Questions about Flux: use the support email on the App Store or Google Play listing.",
-};
+export const metadata: Metadata = pageMetadata("support");
 
 export default function SupportPage() {
   return (
     <Container className="py-16 sm:py-24">
-      <PageHero overline="Support" title="Write to the listing.">
+      <Breadcrumbs page="support" />
+      <PageHero overline="Support" title={PAGES.support.heading}>
         <p>
           Questions about Flux: use the support email on the App Store or Google
           Play listing.

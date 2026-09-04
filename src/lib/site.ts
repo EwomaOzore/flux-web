@@ -15,27 +15,9 @@ export const APP_STORE_URL = process.env.NEXT_PUBLIC_APP_STORE_URL ?? "";
 /** Set NEXT_PUBLIC_PLAY_STORE_URL when the listing is live. */
 export const PLAY_STORE_URL = process.env.NEXT_PUBLIC_PLAY_STORE_URL ?? "";
 
-export const APP_STORE_PLACEHOLDER = "[App Store URL]";
-export const PLAY_STORE_PLACEHOLDER = "[Play Store URL]";
-
-export const SUPPORT_EMAIL_NOTE =
-  "Use the support email on the App Store or Google Play listing for Flux.";
-
 export const NAV = [
   { href: "/product", label: "Product" },
   { href: "/privacy", label: "Privacy" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/faq", label: "FAQ" },
-] as const;
-
-export const ROUTES = [
-  "/",
-  "/product",
-  "/how-it-works",
-  "/privacy",
-  "/terms",
-  "/faq",
-  "/download",
-  "/support",
-  "/brand",
 ] as const;

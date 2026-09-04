@@ -8,6 +8,7 @@ import { hero } from "@/lib/screens";
 
 export function HeroLoop({ className }: Readonly<{ className?: string }>) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [ready, setReady] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
@@ -22,10 +23,13 @@ export function HeroLoop({ className }: Readonly<{ className?: string }>) {
         void video.play();
       }
     };
+    setReady(true);
     apply();
     media.addEventListener("change", apply);
     return () => media.removeEventListener("change", apply);
   }, []);
+
+  const showVideo = ready && !reduceMotion;
 
   return (
     <figure
@@ -35,16 +39,7 @@ export function HeroLoop({ className }: Readonly<{ className?: string }>) {
       )}
     >
       <div className="relative aspect-square origin-center scale-[1.12] lg:origin-right lg:scale-[1.22]">
-        {reduceMotion ? (
-          <Image
-            src={hero.poster}
-            alt="Flux on iPhone: Welcome to Flux."
-            width={1080}
-            height={1080}
-            className="absolute inset-x-0 -top-[1px] h-[calc(100%+10px)] w-full object-fill"
-            priority
-          />
-        ) : (
+        {showVideo ? (
           <video
             ref={videoRef}
             className="absolute inset-x-0 -top-[1px] h-[calc(100%+10px)] w-full bg-transparent object-fill"
@@ -53,9 +48,9 @@ export function HeroLoop({ className }: Readonly<{ className?: string }>) {
             autoPlay
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
             poster={hero.poster}
-            aria-label="Flux app on iPhone"
+            aria-label="Flux app on iPhone: Welcome to Flux."
             onEnded={(event) => {
               const video = event.currentTarget;
               video.pause();
@@ -67,6 +62,15 @@ export function HeroLoop({ className }: Readonly<{ className?: string }>) {
             <source src={hero.webm} type="video/webm" />
             <source src={hero.mov} type='video/mp4; codecs="hvc1"' />
           </video>
+        ) : (
+          <Image
+            src={hero.poster}
+            alt="Flux on iPhone: Welcome to Flux, a private payday planner."
+            width={1080}
+            height={1080}
+            className="absolute inset-x-0 -top-[1px] h-[calc(100%+10px)] w-full object-fill"
+            priority
+          />
         )}
       </div>
     </figure>

@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Container } from "@/components/Chrome";
 import { PageHero } from "@/components/PageHero";
 import { cn } from "@/lib/cn";
 import { LEGAL_LAST_UPDATED, PRIVACY_SECTIONS } from "@/lib/legal";
+import { PAGES, pageMetadata } from "@/lib/pages";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description:
-    "Flux does not collect your budget. No accounts. No bank connection. Budget data stays on your device.",
-  robots: { index: true, follow: true },
-};
+export const metadata: Metadata = pageMetadata("privacy");
 
 const SUMMARY = [
   {
@@ -35,7 +32,8 @@ const SUMMARY = [
 export default function PrivacyPage() {
   return (
     <Container className="py-16 sm:py-24">
-      <PageHero overline="Privacy" title="Your budget stays on your device.">
+      <Breadcrumbs page="privacy" />
+      <PageHero overline="Privacy" title={PAGES.privacy.heading}>
         <p>
           A short reading first. The full policy follows, last updated{" "}
           {LEGAL_LAST_UPDATED}.

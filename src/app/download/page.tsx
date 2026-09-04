@@ -1,30 +1,22 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Container, DisclaimerChip, Overline } from "@/components/Chrome";
 import { PageHero } from "@/components/PageHero";
 import { HomePhone } from "@/components/PhoneMocks";
 import { StoreBadges } from "@/components/StoreBadges";
-import {
-  APP_STORE_PLACEHOLDER,
-  APP_STORE_URL,
-  PLAY_STORE_PLACEHOLDER,
-  PLAY_STORE_URL,
-} from "@/lib/site";
+import { PAGES, pageMetadata } from "@/lib/pages";
 
-export const metadata: Metadata = {
-  title: "Download",
-  description:
-    "Download Flux for iOS and Android. A private payday planner. Your numbers never leave your phone.",
-};
+export const metadata: Metadata = pageMetadata("download");
 
 export default function DownloadPage() {
-  const listingsLive = Boolean(APP_STORE_URL && PLAY_STORE_URL);
-
   return (
     <Container className="py-16 sm:py-24">
+      <Breadcrumbs page="download" />
       <div className="grid items-center gap-16 lg:grid-cols-[1fr_auto]">
         <div>
-          <PageHero overline="Download" title="Get Flux on your phone.">
+          <PageHero overline="Download" title={PAGES.download.heading}>
             <p>
               iOS and Android, built with Expo. Your budget stays on the
               device. No account to create first.
@@ -32,14 +24,6 @@ export default function DownloadPage() {
           </PageHero>
           <StoreBadges className="mt-8" />
           <DisclaimerChip className="mt-6" />
-          {!listingsLive ? (
-            <p className="mt-6 max-w-[42ch] rounded-lg border border-dashed border-border bg-paper px-4 py-3 text-[13px] leading-relaxed text-ink-muted">
-              Store listings are being prepared. Placeholders:{" "}
-              <span className="font-mono">{APP_STORE_PLACEHOLDER}</span>
-              {" · "}
-              <span className="font-mono">{PLAY_STORE_PLACEHOLDER}</span>
-            </p>
-          ) : null}
         </div>
         <HomePhone priority className="lg:mr-4" />
       </div>
@@ -77,6 +61,17 @@ export default function DownloadPage() {
           </p>
         </article>
       </div>
+      <p className="mt-12 text-[14px] text-ink-muted">
+        Before you install, read{" "}
+        <Link href="/privacy" className="font-medium text-forest hover:underline">
+          Privacy
+        </Link>
+        {" · "}
+        <Link href="/how-it-works" className="font-medium text-forest hover:underline">
+          How it works
+        </Link>
+        .
+      </p>
     </Container>
   );
 }

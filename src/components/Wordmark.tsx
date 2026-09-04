@@ -3,15 +3,15 @@ import Link from "next/link";
 
 import { cn } from "@/lib/cn";
 
-type Props = {
+type Props = Readonly<{
   href?: string;
   size?: "sm" | "md";
   tone?: "ink" | "forest" | "paper";
-};
+}>;
 
 const sizes = {
-  sm: { img: 24, text: "text-[18px] leading-none tracking-[-0.04em]" },
-  md: { img: 28, text: "text-[22px] leading-none tracking-[-0.04em]" },
+  sm: { mark: "h-6 w-6", text: "text-[18px] leading-none tracking-[-0.04em]" },
+  md: { mark: "h-7 w-7", text: "text-[22px] leading-none tracking-[-0.04em]" },
 };
 
 export function Wordmark({ href = "/", size = "sm", tone = "forest" }: Props) {
@@ -26,14 +26,14 @@ export function Wordmark({ href = "/", size = "sm", tone = "forest" }: Props) {
   const inner = (
     <>
       <Image
-        src="/brand/logo.png"
+        src="/brand/icon.png"
         alt=""
-        width={s.img}
-        height={s.img}
-        className="rounded-[7px]"
+        width={1024}
+        height={1024}
+        className={cn("rounded-[7px]", s.mark)}
         priority={size === "sm"}
       />
-      <span className={cn("font-display font-normal mt-[3px]", s.text, color)}>
+      <span className={cn("mt-[3px] font-display font-normal", s.text, color)}>
         Flux
       </span>
     </>

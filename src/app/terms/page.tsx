@@ -1,16 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Container } from "@/components/Chrome";
 import { PageHero } from "@/components/PageHero";
 import { LEGAL_LAST_UPDATED, TERMS_SECTIONS } from "@/lib/legal";
+import { PAGES, pageMetadata } from "@/lib/pages";
 
-export const metadata: Metadata = {
-  title: "Terms & Conditions",
-  description:
-    "Flux is a personal calculator. Not a bank. Not financial advice. Budget data stays on your device.",
-  robots: { index: true, follow: true },
-};
+export const metadata: Metadata = pageMetadata("terms");
 
 const SUMMARY = [
   "Flux is a personal calculator and payday planner for amounts you enter yourself.",
@@ -21,7 +18,8 @@ const SUMMARY = [
 export default function TermsPage() {
   return (
     <Container className="py-16 sm:py-24">
-      <PageHero overline="Terms" title="The agreement, in Flux’s voice first.">
+      <Breadcrumbs page="terms" />
+      <PageHero overline="Terms" title={PAGES.terms.heading}>
         <p>
           Three lines, then the full Terms &amp; Conditions. Last updated{" "}
           {LEGAL_LAST_UPDATED}. Meaning unchanged.

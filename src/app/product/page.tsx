@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Container, Overline } from "@/components/Chrome";
 import { IconCamera } from "@/components/Icons";
 import { Money } from "@/components/Money";
@@ -13,12 +15,9 @@ import {
   SettingsPhone,
   TimelinePhone,
 } from "@/components/PhoneMocks";
+import { PAGES, pageMetadata } from "@/lib/pages";
 
-export const metadata: Metadata = {
-  title: "Product",
-  description:
-    "Income streams, bills, timeline, receipts, reminders, lock, currencies, and backup — the Flux payday planner, plainly.",
-};
+export const metadata: Metadata = pageMetadata("product");
 
 const FEATURES = [
   {
@@ -39,7 +38,7 @@ const FEATURES = [
     id: "bills",
     overline: "Plan",
     title: "Bills live on Plan.",
-    body: "Rent, power, data — whatever you list. Amber is for bills. They subtract from take-home every month until you change them.",
+    body: "Rent, power, data — whatever you list. They subtract from take-home every month until you change them.",
     visual: "bills",
   },
   {
@@ -89,7 +88,8 @@ const FEATURES = [
 export default function ProductPage() {
   return (
     <Container className="py-16 sm:py-24">
-      <PageHero overline="Product" title="The tools, no extra story.">
+      <Breadcrumbs page="product" />
+      <PageHero overline="Product" title={PAGES.product.heading}>
         <p>
           Everything Flux does. Nothing it pretends to do. Income in. Bills out.
           Cushion left.
@@ -120,6 +120,20 @@ export default function ProductPage() {
           );
         })}
       </div>
+      <p className="mt-16 text-[15px] text-ink-secondary">
+        Next:{" "}
+        <Link href="/how-it-works" className="font-semibold text-forest hover:underline">
+          how it works
+        </Link>
+        {" · "}
+        <Link href="/privacy" className="font-semibold text-forest hover:underline">
+          privacy
+        </Link>
+        {" · "}
+        <Link href="/download" className="font-semibold text-forest hover:underline">
+          download
+        </Link>
+      </p>
     </Container>
   );
 }
@@ -166,7 +180,7 @@ function FeatureVisual({
     return <SettingsPhone />;
   }
   if (id === "lock") {
-    return <FaceIdPhone />;
+    return <FaceIdPhone priority />;
   }
   if (id === "currency") {
     return <CurrencyPhone />;

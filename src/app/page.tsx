@@ -1,4 +1,8 @@
-import { Container, DisclaimerChip, Overline } from "@/components/Chrome";
+import type { Metadata } from "next";
+import dynamic from "next/dynamic";
+import Link from "next/link";
+
+import { Container, Overline } from "@/components/Chrome";
 import {
   IconBars,
   IconExport,
@@ -8,11 +12,24 @@ import {
   IconPlan,
 } from "@/components/Icons";
 import { Money } from "@/components/Money";
-import { HeroLoop } from "@/components/HeroLoop";
 import { NextPhone, PlanPhone, TimelinePhone } from "@/components/PhoneMocks";
 import { StoreBadges } from "@/components/StoreBadges";
 import { cn } from "@/lib/cn";
-import Link from "next/link";
+import { pageMetadata } from "@/lib/pages";
+
+const HeroLoop = dynamic(
+  () => import("@/components/HeroLoop").then((mod) => mod.HeroLoop),
+  {
+    loading: () => (
+      <div
+        className="mx-auto aspect-square w-full max-w-[28rem] sm:max-w-[32rem] lg:w-[min(100%,42rem)]"
+        aria-hidden
+      />
+    ),
+  },
+);
+
+export const metadata: Metadata = pageMetadata("home");
 
 const LAYOUT = [
   {

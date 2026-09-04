@@ -2,12 +2,7 @@ import Link from "next/link";
 
 import { IconApple, IconPlay } from "@/components/Icons";
 import { cn } from "@/lib/cn";
-import {
-  APP_STORE_PLACEHOLDER,
-  APP_STORE_URL,
-  PLAY_STORE_PLACEHOLDER,
-  PLAY_STORE_URL,
-} from "@/lib/site";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/site";
 
 type Tone = "light" | "dark";
 
@@ -36,7 +31,7 @@ export function StoreBadges({
         icon={<IconApple />}
         kicker="Download for"
         label="iOS"
-        title={APP_STORE_URL ? "Download for iOS" : APP_STORE_PLACEHOLDER}
+        title="Download for iOS"
       />
       <StoreBadge
         href={playHref}
@@ -46,7 +41,7 @@ export function StoreBadges({
         kicker="Download for"
         label="Android"
         outline
-        title={PLAY_STORE_URL ? "Download for Android" : PLAY_STORE_PLACEHOLDER}
+        title="Download for Android"
       />
     </div>
   );

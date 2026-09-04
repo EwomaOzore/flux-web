@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
 
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Button } from "@/components/Button";
 import { Container, DisclaimerChip, Overline } from "@/components/Chrome";
 import { Money } from "@/components/Money";
+import { PAGES, pageMetadata } from "@/lib/pages";
 
-export const metadata: Metadata = {
-  title: "Brand",
-  description: "Flux brand sheet — colors, type, buttons, and voice.",
-  robots: { index: false, follow: true },
-};
+export const metadata: Metadata = pageMetadata("brand");
 
 const COLORS = [
   { name: "Ink", hex: "#1C1814", className: "bg-ink" },
@@ -42,9 +40,10 @@ const DONT = [
 export default function BrandPage() {
   return (
     <Container className="py-16 sm:py-24">
+      <Breadcrumbs page="brand" />
       <Overline>Brand sheet</Overline>
       <h1 className="mt-3 font-display text-[40px] font-medium tracking-[-0.04em] text-ink sm:text-[48px]">
-        Paper, forest, one number.
+        {PAGES.brand.heading}
       </h1>
       <p className="mt-4 max-w-[44ch] text-[17px] text-ink-secondary">
         Calm. Private. Grounded. Precise. Header and footer on this page are

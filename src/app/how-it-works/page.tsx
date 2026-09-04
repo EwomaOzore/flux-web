@@ -1,17 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Button } from "@/components/Button";
 import { Container, Overline } from "@/components/Chrome";
 import { PageHero } from "@/components/PageHero";
 import { CurrencyPhone, WelcomePhone } from "@/components/PhoneMocks";
 import { cn } from "@/lib/cn";
+import { PAGES, pageMetadata } from "@/lib/pages";
 
-export const metadata: Metadata = {
-  title: "How it works",
-  description:
-    "Pick a currency. Add income and bills. Log payday line items. Read the cushion.",
-};
+export const metadata: Metadata = pageMetadata("how-it-works");
 
 const STEPS = [
   {
@@ -39,7 +37,8 @@ const STEPS = [
 export default function HowItWorksPage() {
   return (
     <Container className="py-16 sm:py-24">
-        <PageHero overline="How it works" title="Four steps. Then you stop.">
+        <Breadcrumbs page="how-it-works" />
+        <PageHero overline="How it works" title={PAGES["how-it-works"].heading}>
           <p>
             Flux is a payday planner you fill in. Income in. Bills out. Cushion
             left.
