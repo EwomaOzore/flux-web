@@ -1,64 +1,90 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import Link from "next/link";
+import { Fraunces, Instrument_Sans, JetBrains_Mono } from "next/font/google";
+
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { SITE } from "@/lib/site";
+
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-instrument",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const fraunces = Fraunces({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-fraunces",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-jetbrains",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Flux | Private Payday & Budget Calculator",
-  description: "Take control of your finances with Flux. A local-first, private budget calculator designed for peace of mind.",
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: "Flux — See what’s left after the bills",
+    template: "%s — Flux",
+  },
+  description: SITE.description,
+  applicationName: "Flux",
+  keywords: [
+    "payday planner",
+    "budget calculator",
+    "on-device budget",
+    "private budget app",
+    "Flux",
+  ],
+  authors: [{ name: "Flux" }],
+  openGraph: {
+    title: "Flux — See what’s left after the bills",
+    description: SITE.tagline,
+    siteName: "Flux",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Flux — See what’s left after the bills",
+    description: SITE.tagline,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "/",
+  },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${instrumentSans.variable} ${fraunces.variable} ${jetbrainsMono.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
-        <nav className="fixed top-0 w-full z-50 border-b border-white/10 glass backdrop-blur-md">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between h-16 items-center">
-              <div className="flex items-center">
-                <Link href="/" className="text-xl font-extrabold tracking-tighter hover:opacity-80 transition-opacity">
-                  FLUX
-                </Link>
-              </div>
-              <div className="hidden md:flex items-center space-x-8 text-sm font-medium opacity-70">
-                <Link href="#features" className="hover:text-blue-500 transition-colors">Features</Link>
-                <Link href="#privacy" className="hover:text-blue-500 transition-colors">Privacy</Link>
-                <Link href="/privacy" className="hover:text-blue-500 transition-colors">Privacy Policy</Link>
-                <Link href="/terms" className="hover:text-blue-500 transition-colors">Terms</Link>
-                <Link href="#" className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20">
-                  Download Now
-                </Link>
-              </div>
-            </div>
-          </div>
-        </nav>
-        <main className="flex-grow pt-16">
-          {children}
-        </main>
-        <footer className="border-t border-white/10 py-12 bg-black/5">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-sm opacity-50">
-              © {new Date().getFullYear()} Flux. All rights reserved.
-            </div>
-            <div className="flex space-x-6 text-sm opacity-50">
-              <Link href="/privacy" className="hover:opacity-100 transition-opacity">Privacy Policy</Link>
-              <Link href="/terms" className="hover:opacity-100 transition-opacity">Terms & Conditions</Link>
-            </div>
-          </div>
-        </footer>
+      <body className="min-h-full bg-parchment font-sans text-ink antialiased">
+        <a
+          href="#content"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-forest focus:px-4 focus:py-2 focus:text-white"
+        >
+          Skip to content
+        </a>
+        <Header />
+        <main id="content">{children}</main>
+        <Footer />
       </body>
     </html>
   );

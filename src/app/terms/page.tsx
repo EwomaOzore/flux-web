@@ -1,84 +1,73 @@
-import React from 'react';
+import type { Metadata } from "next";
+import Link from "next/link";
 
-const TERMS_SECTIONS = [
-  {
-    title: "Agreement",
-    body: "By downloading, installing, or using Flux (“the App”), you agree to these Terms & Conditions and our Privacy Policy. If you do not agree, do not use the App.",
-  },
-  {
-    title: "What Flux is",
-    body: "Flux is a personal calculator and planner for amounts you enter yourself — such as income streams, bills, and payday cushion estimates. It is a productivity tool, not a bank, broker, lender, payment service, tax service, or investment platform.",
-  },
-  {
-    title: "What Flux is not",
-    body: "Flux does not move money, hold funds, open financial accounts, connect to your bank, execute trades, offer loans, sell insurance, or provide regulated financial, investment, tax, or legal advice. Any totals, cushions, or projections are arithmetic based on numbers you typed — not recommendations.",
-  },
-  {
-    title: "Not financial advice",
-    body: "Nothing in Flux is personalized financial advice or a substitute for advice from a qualified professional licensed in your jurisdiction. You alone are responsible for financial decisions you make. Do not rely on Flux as the sole basis for borrowing, investing, budgeting commitments, or other money decisions.",
-  },
-  {
-    title: "Accuracy",
-    body: "You are responsible for the accuracy of amounts and dates you enter. Currency conversion, if you perform it mentally or elsewhere before entering figures, is your responsibility. Flux may contain bugs or display errors; verify important numbers independently.",
-  },
-  {
-    title: "Your data and backups",
-    body: "Budget data is stored on your device. We do not provide cloud backup of your entries. Export regularly if you need a copy. We are not liable for data loss from device failure, uninstall, OS updates, or forgotten backups.",
-  },
-  {
-    title: "Acceptable use",
-    body: "Use Flux only for lawful personal budgeting and planning. Do not misuse the App, attempt to disrupt it, or use it to facilitate fraud or illegal activity.",
-  },
-  {
-    title: "Intellectual property",
-    body: "Flux’s name, design, and software are owned by the developer. You receive a limited, non-exclusive, non-transferable license to use the App for personal, non-commercial purposes in accordance with these Terms and the store’s rules.",
-  },
-  {
-    title: "Disclaimer of warranties",
-    body: "THE APP IS PROVIDED “AS IS” AND “AS AVAILABLE” WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. We do not warrant that the App will be uninterrupted, error-free, or that results will meet your expectations.",
-  },
-  {
-    title: "Limitation of liability",
-    body: "TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE DEVELOPER IS NOT LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR FOR ANY LOSS OF PROFITS, DATA, OR OPPORTUNITY, ARISING FROM YOUR USE OF OR INABILITY TO USE THE APP — INCLUDING FINANCIAL DECISIONS YOU MAKE AFTER USING THE APP. OUR TOTAL LIABILITY FOR ANY CLAIM RELATED TO THE APP WILL NOT EXCEED THE AMOUNT YOU PAID TO DOWNLOAD THE APP (IF ANY) IN THE TWELVE MONTHS BEFORE THE CLAIM.",
-  },
-  {
-    title: "Indemnity",
-    body: "You agree to indemnify and hold harmless the developer from claims arising out of your misuse of the App or your breach of these Terms, to the extent permitted by law.",
-  },
-  {
-    title: "Third-party services",
-    body: "The App may rely on platform services (Apple, Google, Expo) for distribution, updates, and diagnostics. Their terms and privacy policies also apply to those services.",
-  },
-  {
-    title: "Changes and termination",
-    body: "We may update these Terms or discontinue the App. Continued use after changes means you accept the new Terms. You may stop using the App at any time by uninstalling it.",
-  },
-  {
-    title: "Governing law",
-    body: "These Terms are governed by the laws applicable in the developer’s place of establishment, without regard to conflict-of-law rules, except where mandatory consumer protections in your country require otherwise.",
-  },
-  {
-    title: "Contact",
-    body: "Questions about these Terms: use the support email on the App Store or Google Play listing for Flux.",
-  },
-];
+import { Container } from "@/components/Chrome";
+import { PageHero } from "@/components/PageHero";
+import { LEGAL_LAST_UPDATED, TERMS_SECTIONS } from "@/lib/legal";
+
+export const metadata: Metadata = {
+  title: "Terms & Conditions",
+  description:
+    "Flux is a personal calculator. Not a bank. Not financial advice. Budget data stays on your device.",
+  robots: { index: true, follow: true },
+};
+
+const SUMMARY = [
+  "Flux is a personal calculator and payday planner for amounts you enter yourself.",
+  "It is not a bank, and it is not financial, investment, tax, or legal advice.",
+  "Budget data stays on your device. We cannot restore a deleted budget.",
+] as const;
 
 export default function TermsPage() {
   return (
-    <div className="max-w-3xl mx-auto px-6 py-20">
-      <h1 className="text-4xl font-extrabold tracking-tight mb-2">Terms & Conditions</h1>
-      <p className="text-sm opacity-50 mb-12">Last updated: September 4, 2026</p>
+    <Container className="py-16 sm:py-24">
+      <PageHero overline="Terms" title="The agreement, in Flux’s voice first.">
+        <p>
+          Three lines, then the full Terms &amp; Conditions. Last updated{" "}
+          {LEGAL_LAST_UPDATED}. Meaning unchanged.
+        </p>
+      </PageHero>
 
-      <div className="space-y-12">
-        {TERMS_SECTIONS.map((section, idx) => (
-          <section key={idx}>
-            <h2 className="text-xl font-semibold mb-3">{section.title}</h2>
-            <p className="text-base opacity-80 leading-relaxed">
-              {section.body}
+      <ol className="mt-12 grid gap-3">
+        {SUMMARY.map((line, i) => (
+          <li key={line} className="flux-card flex gap-4 p-5 sm:p-6">
+            <span className="font-display text-[22px] text-forest">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <p className="text-[16px] leading-relaxed text-ink-secondary">
+              {line}
             </p>
-          </section>
+          </li>
         ))}
-      </div>
-    </div>
+      </ol>
+
+      <article className="mx-auto mt-20 max-w-[680px]">
+        <h2 className="font-display text-[32px] font-medium tracking-[-0.03em] text-ink">
+          Terms &amp; Conditions
+        </h2>
+        <p className="mt-2 text-[14px] text-ink-muted">
+          Last updated: {LEGAL_LAST_UPDATED}
+        </p>
+        <div className="mt-12 space-y-12">
+          {TERMS_SECTIONS.map((section) => (
+            <section key={section.title}>
+              <h3 className="text-[20px] font-semibold tracking-[-0.02em] text-ink">
+                {section.title}
+              </h3>
+              <p className="mt-3 text-[17px] leading-[1.7] text-ink-secondary">
+                {section.body}
+              </p>
+            </section>
+          ))}
+        </div>
+        <p className="mt-16 text-[14px] text-ink-muted">
+          Also see the{" "}
+          <Link href="/privacy" className="text-forest hover:underline">
+            Privacy Policy
+          </Link>
+          .
+        </p>
+      </article>
+    </Container>
   );
 }
