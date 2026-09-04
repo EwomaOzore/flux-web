@@ -91,8 +91,8 @@ export default function ProductPage() {
     <Container className="py-16 sm:py-24">
       <PageHero overline="Product" title="The tools, no extra story.">
         <p>
-          Everything Flux does. Nothing it pretends to do. Income in. Bills
-          out. Cushion left.
+          Everything Flux does. Nothing it pretends to do. Income in. Bills out.
+          Cushion left.
         </p>
       </PageHero>
 
@@ -114,7 +114,7 @@ export default function ProductPage() {
                 </p>
               </div>
               <div className={reverse ? "lg:order-1" : undefined}>
-                <FeatureVisual id={feature.visual} />
+                <FeatureVisual id={feature.visual} priority={index === 0} />
               </div>
             </article>
           );
@@ -124,9 +124,12 @@ export default function ProductPage() {
   );
 }
 
-function FeatureVisual({ id }: { id: string }) {
+function FeatureVisual({
+  id,
+  priority = false,
+}: Readonly<{ id: string; priority?: boolean }>) {
   if (id === "income") {
-    return <HomePhone />;
+    return <HomePhone priority={priority} />;
   }
   if (id === "bills") {
     return <PlanPhone />;

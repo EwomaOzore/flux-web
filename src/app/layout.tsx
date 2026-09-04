@@ -73,6 +73,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${instrumentSans.variable} ${fraunces.variable} ${jetbrainsMono.variable} h-full`}
     >
       <body className="min-h-full bg-parchment font-sans text-ink antialiased">

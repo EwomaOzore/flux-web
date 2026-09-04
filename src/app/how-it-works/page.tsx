@@ -47,8 +47,14 @@ export default function HowItWorksPage() {
         </PageHero>
 
         <div className="mt-14 flex justify-center gap-3 overflow-x-auto pb-2">
-          <WelcomePhone className="mx-0 w-[260px] shrink-0 sm:w-[300px]" />
-          <CurrencyPhone className="mx-0 w-[260px] shrink-0 sm:w-[300px]" />
+          <WelcomePhone
+            priority
+            className="mx-0 w-[260px] shrink-0 sm:w-[300px]"
+          />
+          <CurrencyPhone
+            priority
+            className="mx-0 w-[260px] shrink-0 sm:w-[300px]"
+          />
         </div>
 
         <ol className="mt-16 grid gap-4 sm:mt-20 lg:grid-cols-3">

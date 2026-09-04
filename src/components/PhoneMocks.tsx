@@ -26,6 +26,7 @@ export function AppScreen({
         width={width}
         height={height}
         priority={priority}
+        loading={priority ? "eager" : "lazy"}
         unoptimized
         className="h-auto w-full bg-transparent"
       />
@@ -102,24 +103,38 @@ export function NextPhone({ className }: Readonly<{ className?: string }>) {
   );
 }
 
-export function WelcomePhone({ className }: Readonly<{ className?: string }>) {
+export function WelcomePhone({
+  className,
+  priority,
+}: Readonly<{
+  className?: string;
+  priority?: boolean;
+}>) {
   return (
     <AppScreen
       src={screens.welcome}
       alt="Flux welcome: private, multi-income, calculator only."
       label="Welcome"
       className={className}
+      priority={priority}
     />
   );
 }
 
-export function CurrencyPhone({ className }: Readonly<{ className?: string }>) {
+export function CurrencyPhone({
+  className,
+  priority,
+}: Readonly<{
+  className?: string;
+  priority?: boolean;
+}>) {
   return (
     <AppScreen
       src={screens.currency}
       alt="Flux currency picker: NGN selected, with other currencies listed."
       label="Pick your currency"
       className={className}
+      priority={priority}
     />
   );
 }
@@ -135,13 +150,20 @@ export function SettingsPhone({ className }: Readonly<{ className?: string }>) {
   );
 }
 
-export function FaceIdPhone({ className }: Readonly<{ className?: string }>) {
+export function FaceIdPhone({
+  className,
+  priority,
+}: Readonly<{
+  className?: string;
+  priority?: boolean;
+}>) {
   return (
     <AppScreen
       src={screens.faceId}
       alt="Flux Face ID lock: authenticate to continue."
       label="Face ID lock"
       className={className}
+      priority={priority}
     />
   );
 }

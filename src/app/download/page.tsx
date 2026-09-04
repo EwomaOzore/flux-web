@@ -41,7 +41,7 @@ export default function DownloadPage() {
             </p>
           ) : null}
         </div>
-        <HomePhone className="lg:mr-4" />
+        <HomePhone priority className="lg:mr-4" />
       </div>
 
       <div className="mt-20 grid gap-4 md:grid-cols-2">
