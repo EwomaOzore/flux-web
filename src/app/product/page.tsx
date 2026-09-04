@@ -29,18 +29,18 @@ const FEATURES = [
     visual: "income",
   },
   {
-    id: "bills",
-    overline: "Plan",
-    title: "Bills live on Plan.",
-    body: "Rent, power, data — whatever you list. Amber is for bills. They subtract from take-home every month until you change them.",
-    visual: "bills",
-  },
-  {
     id: "timeline",
     overline: "Timeline",
     title: "Months, with line items.",
     body: "Payday outflows you log as the month happens sit on the timeline. Open a month. See what you entered. Nothing syncs to a cloud ledger.",
     visual: "timeline",
+  },
+  {
+    id: "bills",
+    overline: "Plan",
+    title: "Bills live on Plan.",
+    body: "Rent, power, data — whatever you list. Amber is for bills. They subtract from take-home every month until you change them.",
+    visual: "bills",
   },
   {
     id: "receipts",

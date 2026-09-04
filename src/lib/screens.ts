@@ -1,4 +1,5 @@
 export const DEVICE = { width: 1290, height: 2796 } as const;
+export const DEVICE_SHORT = { width: 1080, height: 1920 } as const;
 
 export const hero = {
   mov: "/videos/hero.mov",
@@ -17,3 +18,13 @@ export const screens = {
   currency: "/screens/currency.png",
   faceId: "/screens/face-id.png",
 } as const;
+
+const SHORT_SCREENS = new Set<string>([
+  screens.timeline,
+  screens.plan,
+  screens.next,
+]);
+
+export function screenSize(src: string) {
+  return SHORT_SCREENS.has(src) ? DEVICE_SHORT : DEVICE;
+}

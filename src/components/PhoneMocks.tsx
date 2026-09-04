@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { cn } from "@/lib/cn";
-import { DEVICE, screens } from "@/lib/screens";
+import { screenSize, screens } from "@/lib/screens";
 
 export function AppScreen({
   src,
@@ -9,22 +9,24 @@ export function AppScreen({
   label,
   className,
   priority = false,
-}: {
+}: Readonly<{
   src: string;
   alt: string;
   label?: string;
   className?: string;
   priority?: boolean;
-}) {
+}>) {
+  const { width, height } = screenSize(src);
+
   return (
     <figure className={cn("mx-auto w-[260px] sm:w-[300px]", className)}>
       <Image
         src={src}
         alt={alt}
-        width={DEVICE.width}
-        height={DEVICE.height}
+        width={width}
+        height={height}
         priority={priority}
-        sizes="(max-width: 640px) 260px, 300px"
+        unoptimized
         className="h-auto w-full bg-transparent"
       />
       {label ? (
@@ -39,10 +41,10 @@ export function AppScreen({
 export function HomePhone({
   className,
   priority,
-}: {
+}: Readonly<{
   className?: string;
   priority?: boolean;
-}) {
+}>) {
   return (
     <AppScreen
       src={screens.home}
@@ -54,7 +56,9 @@ export function HomePhone({
   );
 }
 
-export function HomeEspressoPhone({ className }: { className?: string }) {
+export function HomeEspressoPhone({
+  className,
+}: Readonly<{ className?: string }>) {
   return (
     <AppScreen
       src={screens.homeEspresso}
@@ -65,7 +69,7 @@ export function HomeEspressoPhone({ className }: { className?: string }) {
   );
 }
 
-export function PlanPhone({ className }: { className?: string }) {
+export function PlanPhone({ className }: Readonly<{ className?: string }>) {
   return (
     <AppScreen
       src={screens.plan}
@@ -76,7 +80,7 @@ export function PlanPhone({ className }: { className?: string }) {
   );
 }
 
-export function TimelinePhone({ className }: { className?: string }) {
+export function TimelinePhone({ className }: Readonly<{ className?: string }>) {
   return (
     <AppScreen
       src={screens.timeline}
@@ -87,7 +91,7 @@ export function TimelinePhone({ className }: { className?: string }) {
   );
 }
 
-export function NextPhone({ className }: { className?: string }) {
+export function NextPhone({ className }: Readonly<{ className?: string }>) {
   return (
     <AppScreen
       src={screens.next}
@@ -98,7 +102,7 @@ export function NextPhone({ className }: { className?: string }) {
   );
 }
 
-export function WelcomePhone({ className }: { className?: string }) {
+export function WelcomePhone({ className }: Readonly<{ className?: string }>) {
   return (
     <AppScreen
       src={screens.welcome}
@@ -109,7 +113,7 @@ export function WelcomePhone({ className }: { className?: string }) {
   );
 }
 
-export function CurrencyPhone({ className }: { className?: string }) {
+export function CurrencyPhone({ className }: Readonly<{ className?: string }>) {
   return (
     <AppScreen
       src={screens.currency}
@@ -120,7 +124,7 @@ export function CurrencyPhone({ className }: { className?: string }) {
   );
 }
 
-export function SettingsPhone({ className }: { className?: string }) {
+export function SettingsPhone({ className }: Readonly<{ className?: string }>) {
   return (
     <AppScreen
       src={screens.settings}
@@ -131,7 +135,7 @@ export function SettingsPhone({ className }: { className?: string }) {
   );
 }
 
-export function FaceIdPhone({ className }: { className?: string }) {
+export function FaceIdPhone({ className }: Readonly<{ className?: string }>) {
   return (
     <AppScreen
       src={screens.faceId}
